@@ -1,4 +1,4 @@
-de
+export let dutchWordList =`de
 van
 een
 het
@@ -9949,4 +9949,4 @@ Nothomb
 erfgenamen
 Waarmee
 workshops
-aktief
+aktief`

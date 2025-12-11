@@ -8,6 +8,7 @@ export interface CachedWord {
     pronunciation: string | null;
     gender: string | null;
     rank?: number;
+    fetched: boolean;
     fetchedAt: string;
 }
 
@@ -61,6 +62,7 @@ export function setCachedWord(data: CachedWord): void {
         const key = getCacheKey(data.word);
         const dataWithTimestamp = {
             ...data,
+            fetched: true,
             fetchedAt: new Date().toISOString()
         };
         localStorage.setItem(key, JSON.stringify(dataWithTimestamp));

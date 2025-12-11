@@ -17,7 +17,7 @@ export interface Word {
  */
 export interface WordWithDefinition {
     word: string;
-    rank: number;
+    rank?: number;
     definition: string;
     pronunciation: string | null;
     gender: string | null;
