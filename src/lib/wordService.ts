@@ -37,6 +37,7 @@ export async function getWordDefinition(
 
     // Step 3: Fetch from API
     try {
+        console.log("fetching")
         const rank = wordFromJson?.rank || 0;
         const fetchedWord = await fetchWordDefinition(word, rank);
 

@@ -247,10 +247,14 @@
     {
         "word": "bij",
         "rank": 24,
-        "definition": null,
-        "pronunciation": null,
-        "gender": null,
-        "fetched": false
+        "definition": "honeybee",
+        "pronunciation": "bɛi",
+        "gender": "feminine-masculine",
+        "examples": [
+            "bijenkorf",
+            "bijensteek"
+        ],
+        "fetched": true
     },
     {
         "word": "of",

@@ -17,6 +17,7 @@ const LEXICALA_API_KEY = process.env.LEXICALA_API_KEY;
  * Uses /search-entries to get full data in one call
  */
 export async function searchWord(word: string): Promise<LexicalaResponse> {
+    console.log('fetching');
     if (!LEXICALA_API_KEY) {
         throw new Error('LEXICALA_API_KEY is not configured');
     }
