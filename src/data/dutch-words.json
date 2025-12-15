@@ -259,50 +259,73 @@
     {
         "word": "of",
         "rank": 25,
-        "definition": null,
-        "pronunciation": null,
+        "definition": "either",
+        "pronunciation": "ɔf",
         "gender": null,
-        "fetched": false
+        "examples": [
+            "met de auto of met de fiets gaan",
+            "Wilt u koffie, of iets fris?"
+        ],
+        "fetched": true
     },
     {
         "word": "uit",
         "rank": 26,
-        "definition": null,
-        "pronunciation": null,
+        "definition": "finished",
+        "pronunciation": "œyt",
         "gender": null,
-        "fetched": false
+        "examples": [
+            "Doe jij de radio uit?",
+            "Het vuur is uit."
+        ],
+        "fetched": true
     },
     {
         "word": "nog",
         "rank": 27,
-        "definition": null,
-        "pronunciation": null,
+        "definition": "still",
+        "pronunciation": "nɔx",
         "gender": null,
-        "fetched": false
+        "examples": [
+            "Ben je nog niet naar school?",
+            "nog altijd niet getrouwd"
+        ],
+        "fetched": true
     },
     {
         "word": "worden",
         "rank": 28,
-        "definition": null,
-        "pronunciation": null,
+        "definition": "be",
+        "pronunciation": "ˈwɔrdə(n)",
         "gender": null,
-        "fetched": false
+        "examples": [
+            "Ik word ziek.",
+            "Hij wil later piloot worden.",
+            "door de zon lekker bruin worden"
+        ],
+        "fetched": true
     },
     {
         "word": "door",
         "rank": 29,
-        "definition": null,
-        "pronunciation": null,
+        "definition": "through",
+        "pronunciation": "dor",
         "gender": null,
-        "fetched": false
+        "examples": [
+            "Ik kan de straat niet door als dat hek er staat."
+        ],
+        "fetched": true
     },
     {
         "word": "naar",
         "rank": 30,
-        "definition": null,
-        "pronunciation": null,
+        "definition": "bleak",
+        "pronunciation": "nar",
         "gender": null,
-        "fetched": false
+        "examples": [
+            "een nare smaak in je mond"
+        ],
+        "fetched": true
     },
     {
         "word": "heeft",
@@ -315,18 +338,24 @@
     {
         "word": "tot",
         "rank": 32,
-        "definition": null,
-        "pronunciation": null,
+        "definition": "(up) to",
+        "pronunciation": "tɔt",
         "gender": null,
-        "fetched": false
+        "examples": [
+            "tot de deur"
+        ],
+        "fetched": true
     },
     {
         "word": "ze",
         "rank": 33,
-        "definition": null,
-        "pronunciation": null,
+        "definition": "she",
+        "pronunciation": "zɛ",
         "gender": null,
-        "fetched": false
+        "examples": [
+            "Ze zag me niet."
+        ],
+        "fetched": true
     },
     {
         "word": "wordt",
@@ -339,18 +368,26 @@
     {
         "word": "over",
         "rank": 35,
-        "definition": null,
-        "pronunciation": null,
+        "definition": "over",
+        "pronunciation": "ˈovər",
         "gender": null,
-        "fetched": false
+        "examples": [
+            "Ze liepen het plein over."
+        ],
+        "fetched": true
     },
     {
         "word": "hij",
         "rank": 36,
-        "definition": null,
-        "pronunciation": null,
+        "definition": "he",
+        "pronunciation": "hɛi",
         "gender": null,
-        "fetched": false
+        "examples": [
+            "Mijn vader is vroeg opgestaan. Hij gaat vissen.",
+            "De auto staat al tijden voor de deur. Hij is kapot.",
+            "Hij had best willen komen, maar zijn vriendin wilde niet."
+        ],
+        "fetched": true
     },
     {
         "word": "In",
@@ -363,106 +400,151 @@
     {
         "word": "meer",
         "rank": 38,
-        "definition": null,
-        "pronunciation": null,
-        "gender": null,
-        "fetched": false
+        "definition": "lake",
+        "pronunciation": "mer",
+        "gender": "neuter",
+        "examples": [
+            "een zeiltocht op het meer",
+            "stuwmeer"
+        ],
+        "fetched": true
     },
     {
         "word": "jaar",
         "rank": 39,
-        "definition": null,
-        "pronunciation": null,
-        "gender": null,
-        "fetched": false
+        "definition": "year",
+        "pronunciation": "jar",
+        "gender": "neuter",
+        "examples": [
+            "We gaan in april voor een jaar naar het buitenland.",
+            "dertig jaar lang met iemand getrouwd geweest zijn"
+        ],
+        "fetched": true
     },
     {
         "word": "was",
         "rank": 40,
-        "definition": null,
-        "pronunciation": null,
-        "gender": null,
-        "fetched": false
+        "definition": "wash",
+        "pronunciation": "wɑs",
+        "gender": "masculine",
+        "examples": [
+            "de was doen",
+            "Ik moet nog een was draaien.",
+            "handwas"
+        ],
+        "fetched": true
     },
     {
         "word": "ik",
         "rank": 41,
-        "definition": null,
-        "pronunciation": null,
+        "definition": "I",
+        "pronunciation": "ɪk",
         "gender": null,
-        "fetched": false
+        "examples": [
+            "Ik kom zo!"
+        ],
+        "fetched": true
     },
     {
         "word": "kan",
         "rank": 42,
-        "definition": null,
-        "pronunciation": null,
-        "gender": null,
-        "fetched": false
+        "definition": "jug",
+        "pronunciation": "kɑn",
+        "gender": "masculine-feminine",
+        "examples": [
+            "bij het eten een kan water op tafel zetten",
+            "koffiekan"
+        ],
+        "fetched": true
     },
     {
         "word": "je",
         "rank": 43,
-        "definition": null,
-        "pronunciation": null,
+        "definition": "you",
+        "pronunciation": "jə",
         "gender": null,
-        "fetched": false
+        "examples": [
+            "Ga je morgen ook weg?"
+        ],
+        "fetched": true
     },
     {
         "word": "zich",
         "rank": 44,
-        "definition": null,
-        "pronunciation": null,
+        "definition": "himself",
+        "pronunciation": "zɪx",
         "gender": null,
-        "fetched": false
+        "examples": [
+            "Hij heeft zich vergist.",
+            "Mensen laten zich het gemakkelijkst overtuigen door oudere, blanke mannen met een bril."
+        ],
+        "fetched": true
     },
     {
         "word": "al",
         "rank": 45,
-        "definition": null,
-        "pronunciation": null,
+        "definition": "already",
+        "pronunciation": "ɑl",
         "gender": null,
-        "fetched": false
+        "examples": [
+            "Ben je er al?"
+        ],
+        "fetched": true
     },
     {
         "word": "hebben",
         "rank": 46,
-        "definition": null,
-        "pronunciation": null,
+        "definition": "have",
+        "pronunciation": "ˈhɛbə(n)",
         "gender": null,
-        "fetched": false
+        "examples": [
+            "een mooi gebit hebben",
+            "de Nederlandse nationaliteit hebben",
+            "morgen tijd hebben om naar de film te gaan"
+        ],
+        "fetched": true
     },
     {
         "word": "geen",
         "rank": 47,
-        "definition": null,
-        "pronunciation": null,
+        "definition": "no",
+        "pronunciation": "xen",
         "gender": null,
-        "fetched": false
+        "fetched": true
     },
     {
         "word": "hun",
         "rank": 48,
-        "definition": null,
-        "pronunciation": null,
+        "definition": "their",
+        "pronunciation": "hʏn",
         "gender": null,
-        "fetched": false
+        "examples": [
+            "De buren hebben hun huis verkocht."
+        ],
+        "fetched": true
     },
     {
         "word": "we",
         "rank": 49,
-        "definition": null,
-        "pronunciation": null,
+        "definition": "we",
+        "pronunciation": "wə",
         "gender": null,
-        "fetched": false
+        "examples": [
+            "Ze vraagt of we morgen kunnen komen."
+        ],
+        "fetched": true
     },
     {
         "word": "wat",
         "rank": 50,
-        "definition": null,
-        "pronunciation": null,
+        "definition": "some",
+        "pronunciation": "wɑt",
         "gender": null,
-        "fetched": false
+        "examples": [
+            "Ik ben wat moe.",
+            "We komen wat later."
+        ],
+        "fetched": true
     },
     {
         "word": "Een",
@@ -507,10 +589,13 @@
     {
         "word": "kunnen",
         "rank": 56,
-        "definition": null,
-        "pronunciation": null,
+        "definition": "can",
+        "pronunciation": "ˈkʏnə(n)",
         "gender": null,
-        "fetched": false
+        "examples": [
+            "kunnen voetballen"
+        ],
+        "fetched": true
     },
     {
         "word": "Dat",
@@ -523,26 +608,35 @@
     {
         "word": "nu",
         "rank": 58,
-        "definition": null,
-        "pronunciation": null,
+        "definition": "(right) now",
+        "pronunciation": "ny",
         "gender": null,
-        "fetched": false
+        "examples": [
+            "Ik doe het wel, maar niet nu."
+        ],
+        "fetched": true
     },
     {
         "word": "dit",
         "rank": 59,
-        "definition": null,
-        "pronunciation": null,
+        "definition": "this",
+        "pronunciation": "dɪt",
         "gender": null,
-        "fetched": false
+        "examples": [
+            "Wil je dit boek of dat boek hebben?"
+        ],
+        "fetched": true
     },
     {
         "word": "deze",
         "rank": 60,
-        "definition": null,
-        "pronunciation": null,
+        "definition": "this",
+        "pronunciation": "ˈdezə",
         "gender": null,
-        "fetched": false
+        "examples": [
+            "Deze jurk vind ik mooier dan die jurk."
+        ],
+        "fetched": true
     },
     {
         "word": "zal",
@@ -563,18 +657,21 @@
     {
         "word": "veel",
         "rank": 63,
-        "definition": null,
-        "pronunciation": null,
+        "definition": "much",
+        "pronunciation": "vel",
         "gender": null,
-        "fetched": false
+        "examples": [
+            "Zij is veel jonger dan haar broer."
+        ],
+        "fetched": true
     },
     {
         "word": "zo",
         "rank": 64,
-        "definition": null,
+        "definition": "Sun.",
         "pronunciation": null,
         "gender": null,
-        "fetched": false
+        "fetched": true
     },
     {
         "word": "En",
@@ -611,42 +708,56 @@
     {
         "word": "twee",
         "rank": 69,
-        "definition": null,
-        "pronunciation": null,
+        "definition": "two",
+        "pronunciation": "twe",
         "gender": null,
-        "fetched": false
+        "fetched": true
     },
     {
         "word": "moeten",
         "rank": 70,
-        "definition": null,
-        "pronunciation": null,
+        "definition": "have to",
+        "pronunciation": "ˈmutə(n)",
         "gender": null,
-        "fetched": false
+        "examples": [
+            "Ik heb geen zin, maar het moet.",
+            "naar Den Haag moeten voor een vergadering"
+        ],
+        "fetched": true
     },
     {
         "word": "onder",
         "rank": 71,
-        "definition": null,
-        "pronunciation": null,
+        "definition": "under",
+        "pronunciation": "ˈɔndər",
         "gender": null,
-        "fetched": false
+        "examples": [
+            "Onder in de kast staat de stofzuiger."
+        ],
+        "fetched": true
     },
     {
         "word": "eerste",
         "rank": 72,
-        "definition": null,
-        "pronunciation": null,
+        "definition": "first",
+        "pronunciation": "ˈerstə",
         "gender": null,
-        "fetched": false
+        "examples": [
+            "de eerste klas van de basisschool",
+            "De Eerste Kamer en de Tweede Kamer vormen in Nederland samen het Parlement."
+        ],
+        "fetched": true
     },
     {
         "word": "haar",
         "rank": 73,
-        "definition": null,
-        "pronunciation": null,
-        "gender": null,
-        "fetched": false
+        "definition": "hair",
+        "pronunciation": "har",
+        "gender": "masculine-feminine",
+        "examples": [
+            "je haren wassen"
+        ],
+        "fetched": true
     },
     {
         "word": "Van",
@@ -659,26 +770,36 @@
     {
         "word": "wil",
         "rank": 75,
-        "definition": null,
-        "pronunciation": null,
-        "gender": null,
-        "fetched": false
+        "definition": "will",
+        "pronunciation": "wɪl",
+        "gender": "masculine",
+        "examples": [
+            "een sterke wil hebben"
+        ],
+        "fetched": true
     },
     {
         "word": "tegen",
         "rank": 76,
-        "definition": null,
-        "pronunciation": null,
+        "definition": "against",
+        "pronunciation": "ˈtexə(n)",
         "gender": null,
-        "fetched": false
+        "examples": [
+            "tegen een beslissing stemmen"
+        ],
+        "fetched": true
     },
     {
         "word": "men",
         "rank": 77,
-        "definition": null,
-        "pronunciation": null,
+        "definition": "one",
+        "pronunciation": "mɛn",
         "gender": null,
-        "fetched": false
+        "examples": [
+            "Men spreekt liever niet over deze kwestie.",
+            "zoiets doet men niet waar vreemden bij zijn"
+        ],
+        "fetched": true
     },
     {
         "word": "mensen",
@@ -699,10 +820,13 @@
     {
         "word": "tussen",
         "rank": 80,
-        "definition": null,
-        "pronunciation": null,
+        "definition": "between",
+        "pronunciation": "ˈtʏsə(n)",
         "gender": null,
-        "fetched": false
+        "examples": [
+            "de weg tussen Amsterdam en Utrecht"
+        ],
+        "fetched": true
     },
     {
         "word": "grote",
@@ -715,42 +839,60 @@
     {
         "word": "waar",
         "rank": 82,
-        "definition": null,
-        "pronunciation": null,
-        "gender": null,
-        "fetched": false
+        "definition": "goods",
+        "pronunciation": "war",
+        "gender": "feminine-masculine",
+        "examples": [
+            "warenhuis",
+            "handelswaar"
+        ],
+        "fetched": true
     },
     {
         "word": "goed",
         "rank": 83,
-        "definition": null,
-        "pronunciation": null,
-        "gender": null,
-        "fetched": false
+        "definition": "stuff",
+        "pronunciation": "xut",
+        "gender": "neuter",
+        "examples": [
+            "je geld en je goed"
+        ],
+        "fetched": true
     },
     {
         "word": "maken",
         "rank": 84,
-        "definition": null,
-        "pronunciation": null,
+        "definition": "make",
+        "pronunciation": "'makə(n)",
         "gender": null,
-        "fetched": false
+        "examples": [
+            "een tekening maken",
+            "winst maken",
+            "veel lawaai maken"
+        ],
+        "fetched": true
     },
     {
         "word": "dus",
         "rank": 85,
-        "definition": null,
-        "pronunciation": null,
+        "definition": "so",
+        "pronunciation": "dʏs",
         "gender": null,
-        "fetched": false
+        "examples": [
+            "Ik ben bekaf, dus ik ga vroeg naar bed."
+        ],
+        "fetched": true
     },
     {
         "word": "alleen",
         "rank": 86,
-        "definition": null,
-        "pronunciation": null,
+        "definition": "alone",
+        "pronunciation": "ɑˈlen",
         "gender": null,
-        "fetched": false
+        "examples": [
+            "Ik ben vanavond alleen thuis."
+        ],
+        "fetched": true
     },
     {
         "word": "Hij",
@@ -771,26 +913,36 @@
     {
         "word": "frank",
         "rank": 89,
-        "definition": null,
-        "pronunciation": null,
-        "gender": null,
-        "fetched": false
+        "definition": "franc",
+        "pronunciation": "frɑŋk",
+        "gender": "masculine",
+        "examples": [
+            "Zwitserse frank"
+        ],
+        "fetched": true
     },
     {
         "word": "ons",
         "rank": 90,
-        "definition": null,
-        "pronunciation": null,
-        "gender": null,
-        "fetched": false
+        "definition": "ounce",
+        "pronunciation": "ɔns",
+        "gender": "neuter",
+        "examples": [
+            "twee ons worst"
+        ],
+        "fetched": true
     },
     {
         "word": "daar",
         "rank": 91,
-        "definition": null,
-        "pronunciation": null,
+        "definition": "there",
+        "pronunciation": "dar",
         "gender": null,
-        "fetched": false
+        "examples": [
+            "De bibliotheek is daar, achter die huizen.",
+            "Ik ga graag naar mijn oma. Daar zijn leuke dingen te doen."
+        ],
+        "fetched": true
     },
     {
         "word": "na",
@@ -811,18 +963,26 @@
     {
         "word": "gaan",
         "rank": 94,
-        "definition": null,
-        "pronunciation": null,
+        "definition": "move along",
+        "pronunciation": "xan",
         "gender": null,
-        "fetched": false
+        "examples": [
+            "naar huis gaan",
+            "met de fiets gaan",
+            "teruggaan"
+        ],
+        "fetched": true
     },
     {
         "word": "alle",
         "rank": 95,
-        "definition": null,
-        "pronunciation": null,
+        "definition": "all",
+        "pronunciation": "ˈɑlə",
         "gender": null,
-        "fetched": false
+        "examples": [
+            "alle bomen in de tuin snoeien"
+        ],
+        "fetched": true
     },
     {
         "word": "Als",
@@ -851,10 +1011,14 @@
     {
         "word": "miljoen",
         "rank": 99,
-        "definition": null,
-        "pronunciation": null,
-        "gender": null,
-        "fetched": false
+        "definition": "million",
+        "pronunciation": "mɪl'jun",
+        "gender": "neuter",
+        "examples": [
+            "een project dat miljoenen euro's kost",
+            "een land met acht miljoen inwoners"
+        ],
+        "fetched": true
     },
     {
         "word": "jaren",
