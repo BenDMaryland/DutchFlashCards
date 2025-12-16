@@ -2,9 +2,15 @@
 
 const CACHE_PREFIX = 'dutch-word-';
 
+export interface Definition {
+    text: string;
+    semanticCategory?: string;
+    semanticSubcategory?: string;
+}
+
 export interface CachedWord {
     word: string;
-    definition: string;
+    definitions: Definition[];
     pronunciation: string | null;
     gender: string | null;
     rank?: number;

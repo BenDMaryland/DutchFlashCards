@@ -6,10 +6,19 @@
 export interface Word {
     word: string;
     rank: number;
-    definition?: string | null;
+    definitions?: Definition[] | null;
     pronunciation?: string | null;
     gender?: string | null;
     fetched: boolean;
+}
+
+/**
+ * Individual definition with semantic context
+ */
+export interface Definition {
+    text: string;
+    semanticCategory?: string;
+    semanticSubcategory?: string;
 }
 
 /**
@@ -18,7 +27,7 @@ export interface Word {
 export interface WordWithDefinition {
     word: string;
     rank?: number;
-    definition: string;
+    definitions: Definition[];
     pronunciation: string | null;
     gender: string | null;
     examples?: string[];

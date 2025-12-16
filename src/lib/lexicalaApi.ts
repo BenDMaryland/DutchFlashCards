@@ -7,7 +7,7 @@ import type {
     LexicalaTranslation,
     WordWithDefinition,
     ApiError,
-} from '../types';
+} from '@/types';
 
 const LEXICALA_BASE_URL = 'https://lexicala1.p.rapidapi.com';
 const LEXICALA_API_KEY = process.env.LEXICALA_API_KEY;
@@ -17,7 +17,6 @@ const LEXICALA_API_KEY = process.env.LEXICALA_API_KEY;
  * Uses /search-entries to get full data in one call
  */
 export async function searchWord(word: string): Promise<LexicalaResponse> {
-    console.log('fetching');
     if (!LEXICALA_API_KEY) {
         throw new Error('LEXICALA_API_KEY is not configured');
     }
@@ -103,10 +102,7 @@ function extractExamples(sense: LexicalaSense): string[] {
 
 /**
  * Extract the primary definition from Lexicala response
- * Logic:
- * 1. Find entry with homograph_number = 1 (most common)
- * 2. Use the first sense from that entry
- * 3. Extract English translation
+ * Now extracts ALL senses from the primary entry (most common homograph)
  */
 export function extractPrimaryDefinition(
     response: LexicalaResponse,
@@ -126,33 +122,47 @@ export function extractPrimaryDefinition(
     // Get the most common entry
     const primaryEntry: LexicalaEntry = sortedResults[0];
 
-    // Get the first sense (most common meaning)
-    const primarySense: LexicalaSense = primaryEntry.senses[0];
-
-    if (!primarySense) {
+    if (!primaryEntry.senses || primaryEntry.senses.length === 0) {
         return null;
     }
 
-    // Extract English translation
-    const englishTranslation = extractEnglishTranslation(
-        primarySense.translations?.en
-    );
+    // Extract ALL senses (not just the first one)
+    const definitions: Array<{
+        text: string;
+        semanticCategory?: string;
+        semanticSubcategory?: string;
+    }> = [];
 
-    if (!englishTranslation) {
+    const allExamples: string[] = [];
+
+    primaryEntry.senses.forEach((sense: LexicalaSense) => {
+        const englishTranslation = extractEnglishTranslation(sense.translations?.en);
+
+        if (englishTranslation) {
+            definitions.push({
+                text: englishTranslation,
+                semanticCategory: sense.semantic_category,
+                semanticSubcategory: sense.semantic_subcategory,
+            });
+        }
+
+        // Collect examples from all senses
+        const senseExamples = extractExamples(sense);
+        allExamples.push(...senseExamples);
+    });
+
+    if (definitions.length === 0) {
         return null;
     }
-
-    // Extract examples
-    const examples = extractExamples(primarySense);
 
     // Build the result
     const result: WordWithDefinition = {
         word: primaryEntry.headword.text,
         rank: rank || 0,
-        definition: englishTranslation,
+        definitions,
         pronunciation: primaryEntry.headword.pronunciation?.value || null,
         gender: primaryEntry.headword.gender || null,
-        examples: examples.length > 0 ? examples : undefined,
+        examples: allExamples.length > 0 ? allExamples.slice(0, 5) : undefined, // Limit to 5 total examples
         fetched: true,
     };
 

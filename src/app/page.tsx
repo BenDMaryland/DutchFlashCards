@@ -3,6 +3,9 @@
 import { useEffect, useState } from 'react';
 import { getTotalWordCount, getDefinitionStats } from '@/lib/wordService';
 import { setCachedWord, getAllCachedWords } from '@/lib/wordCache';
+import Card from "../compontents/card"
+import { dutchWordList } from '../data/dutch-words'
+
 
 import type { WordWithDefinition } from '@/types';
 
@@ -15,7 +18,7 @@ export default function HomePage() {
       setFetching(true);
       try {
         // Fetch from YOUR API route (server-side)
-        const response = await fetch('/api/words?start=50&end=100');
+        const response = await fetch('/api/words?start=0&end=50');
         const data = await response.json();
         setWords(data);
 
@@ -23,7 +26,7 @@ export default function HomePage() {
         data.forEach((word: WordWithDefinition) => {
           setCachedWord({
             word: word.word,
-            definition: word.definition,
+            definitions: word.definitions,
             pronunciation: word.pronunciation,
             gender: word.gender,
             rank: word.rank,
@@ -39,19 +42,11 @@ export default function HomePage() {
     }
 
     fetchWords();
-
   }, []);
 
 
-  useEffect(() => {
-    console.warn("new attesmpt")
-    console.log(words)
-    
-  }, [words])
 
- // console.log(JSON.stringify(getAllCachedWords()))
-  console.warn("new attesmpt")
-  console.log(words)
+  // console.log(JSON.stringify(words))
 
   return (
     <div>
@@ -66,8 +61,15 @@ export default function HomePage() {
         {fetching ? (
           <p>Fetching...</p>
         ) : (
-          <p>Fetched {words.length} words</p>
+          <p>Fetched {words.length} : words</p>
         )}
+        {words ? (<div>
+          {words.map((word, i) => {
+
+            if (word.rank) return (<Card key={word.rank + (i * 90000)} word={word} />)
+          })}
+        </div>) : (<div>
+        </div>)}
       </div>
 
 
@@ -75,559 +77,489 @@ export default function HomePage() {
   );
 }
 
-
-
-
-let examp2 = [
-  {
-    "word": "wat",
-    "rank": 50,
-    "definition": "some",
-    "pronunciation": "wɑt",
-    "gender": null,
-    "examples": [
-      "Ik ben wat moe.",
-      "We komen wat later."
-    ],
-    "fetched": true
-  },
-  {
-    "word": "een",
-    "rank": 2,
-    "definition": "one",
-    "pronunciation": "en",
-    "gender": null,
-    "fetched": true
-  },
-  {
-    "word": "maar",
-    "rank": 23,
-    "definition": "only",
-    "pronunciation": "mar",
-    "gender": null,
-    "fetched": true
-  },
-  {
-    "word": "kunnen",
-    "rank": 56,
-    "definition": "can",
-    "pronunciation": "ˈkʏnə(n)",
-    "gender": null,
-    "examples": [
-      "kunnen voetballen"
-    ],
-    "fetched": true
-  },
-  {
-    "word": "dat",
-    "rank": 7,
-    "definition": "that",
-    "pronunciation": "dɑt",
-    "gender": null,
-    "fetched": true
-  },
-  {
-    "word": "nu",
-    "rank": 58,
-    "definition": "(right) now",
-    "pronunciation": "ny",
-    "gender": null,
-    "examples": [
-      "Ik doe het wel, maar niet nu."
-    ],
-    "fetched": true
-  },
-  {
-    "word": "dit",
-    "rank": 59,
-    "definition": "this",
-    "pronunciation": "dɪt",
-    "gender": null,
-    "examples": [
-      "Wil je dit boek of dat boek hebben?"
-    ],
-    "fetched": true
-  },
-  {
-    "word": "deze",
-    "rank": 60,
-    "definition": "this",
-    "pronunciation": "ˈdezə",
-    "gender": null,
-    "examples": [
-      "Deze jurk vind ik mooier dan die jurk."
-    ],
-    "fetched": true
-  },
-  {
-    "word": "veel",
-    "rank": 63,
-    "definition": "much",
-    "pronunciation": "vel",
-    "gender": null,
-    "examples": [
-      "Zij is veel jonger dan haar broer."
-    ],
-    "fetched": true
-  },
-  {
-    "word": "zo",
-    "rank": 64,
-    "definition": "Sun.",
-    "pronunciation": null,
-    "gender": null,
-    "fetched": true
-  },
-  {
-    "word": "en",
-    "rank": 4,
-    "definition": "and",
-    "pronunciation": "ɛn",
-    "gender": null,
-    "fetched": true
-  },
-  {
-    "word": "twee",
-    "rank": 69,
-    "definition": "two",
-    "pronunciation": "twe",
-    "gender": null,
-    "fetched": true
-  },
-  {
-    "word": "moeten",
-    "rank": 70,
-    "definition": "have to",
-    "pronunciation": "ˈmutə(n)",
-    "gender": null,
-    "examples": [
-      "Ik heb geen zin, maar het moet.",
-      "naar Den Haag moeten voor een vergadering"
-    ],
-    "fetched": true
-  },
-  {
-    "word": "onder",
-    "rank": 71,
-    "definition": "under",
-    "pronunciation": "ˈɔndər",
-    "gender": null,
-    "examples": [
-      "Onder in de kast staat de stofzuiger."
-    ],
-    "fetched": true
-  },
-  {
-    "word": "eerste",
-    "rank": 72,
-    "definition": "first",
-    "pronunciation": "ˈerstə",
-    "gender": null,
-    "examples": [
-      "de eerste klas van de basisschool",
-      "De Eerste Kamer en de Tweede Kamer vormen in Nederland samen het Parlement."
-    ],
-    "fetched": true
-  },
-  {
-    "word": "haar",
-    "rank": 73,
-    "definition": "hair",
-    "pronunciation": "har",
-    "gender": "masculine-feminine",
-    "examples": [
-      "je haren wassen"
-    ],
-    "fetched": true
-  },
-  {
-    "word": "van",
-    "rank": 1,
-    "definition": "of",
-    "pronunciation": "vɑn",
-    "gender": null,
-    "fetched": true
-  },
-  {
-    "word": "wil",
-    "rank": 75,
-    "definition": "will",
-    "pronunciation": "wɪl",
-    "gender": "masculine",
-    "examples": [
-      "een sterke wil hebben"
-    ],
-    "fetched": true
-  },
-  {
-    "word": "tegen",
-    "rank": 76,
-    "definition": "against",
-    "pronunciation": "ˈtexə(n)",
-    "gender": null,
-    "examples": [
-      "tegen een beslissing stemmen"
-    ],
-    "fetched": true
-  },
-  {
-    "word": "men",
-    "rank": 77,
-    "definition": "one",
-    "pronunciation": "mɛn",
-    "gender": null,
-    "examples": [
-      "Men spreekt liever niet over deze kwestie.",
-      "zoiets doet men niet waar vreemden bij zijn"
-    ],
-    "fetched": true
-  },
-  {
-    "word": "tussen",
-    "rank": 80,
-    "definition": "between",
-    "pronunciation": "ˈtʏsə(n)",
-    "gender": null,
-    "examples": [
-      "de weg tussen Amsterdam en Utrecht"
-    ],
-    "fetched": true
-  },
-  {
-    "word": "waar",
-    "rank": 82,
-    "definition": "goods",
-    "pronunciation": "war",
-    "gender": "feminine-masculine",
-    "examples": [
-      "warenhuis",
-      "handelswaar"
-    ],
-    "fetched": true
-  },
-  {
-    "word": "goed",
-    "rank": 83,
-    "definition": "stuff",
-    "pronunciation": "xut",
-    "gender": "neuter",
-    "examples": [
-      "je geld en je goed"
-    ],
-    "fetched": true
-  },
-  {
-    "word": "maken",
-    "rank": 84,
-    "definition": "make",
-    "pronunciation": "'makə(n)",
-    "gender": null,
-    "examples": [
-      "een tekening maken",
-      "winst maken",
-      "veel lawaai maken"
-    ],
-    "fetched": true
-  },
-  {
-    "word": "dus",
-    "rank": 85,
-    "definition": "so",
-    "pronunciation": "dʏs",
-    "gender": null,
-    "examples": [
-      "Ik ben bekaf, dus ik ga vroeg naar bed."
-    ],
-    "fetched": true
-  },
-  {
-    "word": "alleen",
-    "rank": 86,
-    "definition": "alone",
-    "pronunciation": "ɑˈlen",
-    "gender": null,
-    "examples": [
-      "Ik ben vanavond alleen thuis."
-    ],
-    "fetched": true
-  },
-  {
-    "word": "op",
-    "rank": 8,
-    "definition": "on",
-    "pronunciation": "ɔp",
-    "gender": null,
-    "fetched": true
-  },
-  {
-    "word": "frank",
-    "rank": 89,
-    "definition": "franc",
-    "pronunciation": "frɑŋk",
-    "gender": "masculine",
-    "examples": [
-      "Zwitserse frank"
-    ],
-    "fetched": true
-  },
-  {
-    "word": "ons",
-    "rank": 90,
-    "definition": "ounce",
-    "pronunciation": "ɔns",
-    "gender": "neuter",
-    "examples": [
-      "twee ons worst"
-    ],
-    "fetched": true
-  },
-  {
-    "word": "daar",
-    "rank": 91,
-    "definition": "there",
-    "pronunciation": "dar",
-    "gender": null,
-    "examples": [
-      "De bibliotheek is daar, achter die huizen.",
-      "Ik ga graag naar mijn oma. Daar zijn leuke dingen te doen."
-    ],
-    "fetched": true
-  },
-  {
-    "word": "gaan",
-    "rank": 94,
-    "definition": "move along",
-    "pronunciation": "xan",
-    "gender": null,
-    "examples": [
-      "naar huis gaan",
-      "met de fiets gaan",
-      "teruggaan"
-    ],
-    "fetched": true
-  },
-  {
-    "word": "alle",
-    "rank": 95,
-    "definition": "all",
-    "pronunciation": "ˈɑlə",
-    "gender": null,
-    "examples": [
-      "alle bomen in de tuin snoeien"
-    ],
-    "fetched": true
-  },
-  {
-    "word": "als",
-    "rank": 21,
-    "definition": "as",
-    "pronunciation": "ɑls",
-    "gender": null,
-    "fetched": true
-  },
-  {
-    "word": "er",
-    "rank": 17,
-    "definition": "there",
-    "pronunciation": "ɛr",
-    "gender": null,
-    "fetched": true
-  },
-  {
-    "word": "miljoen",
-    "rank": 99,
-    "definition": "million",
-    "pronunciation": "mɪl'jun",
-    "gender": "neuter",
-    "examples": [
-      "een project dat miljoenen euro's kost",
-      "een land met acht miljoen inwoners"
-    ],
-    "fetched": true
-  }
-]
-
-let example = [
+let missing = [
   {
     "word": "de",
     "rank": 0,
-    "definition": "the",
+    "definitions": [
+      {
+        "text": "the"
+      }
+    ],
     "pronunciation": "də",
     "gender": null,
+    "examples": [
+      "De vork en het mes."
+    ],
     "fetched": true
   },
   {
     "word": "van",
     "rank": 1,
-    "definition": "of",
+    "definitions": [
+      {
+        "text": "of",
+        "semanticSubcategory": "afkomstig van"
+      },
+      {
+        "text": "by",
+        "semanticSubcategory": "m.b.t. eigendom"
+      },
+      {
+        "text": "from",
+        "semanticSubcategory": "gemaakt van"
+      },
+      {
+        "text": "of",
+        "semanticSubcategory": "m.b.t. kenmerk"
+      }
+    ],
     "pronunciation": "vɑn",
     "gender": null,
+    "examples": [
+      "van Amsterdam",
+      "Ik hoorde het van mijn collega.",
+      "de jas van mijn zus",
+      "de moeder van mijn buurvrouw",
+      "een tafel van hout"
+    ],
     "fetched": true
   },
   {
     "word": "een",
     "rank": 2,
-    "definition": "one",
+    "definitions": [
+      {
+        "text": "one"
+      }
+    ],
     "pronunciation": "en",
     "gender": null,
+    "examples": [
+      "een zijn met de natuur"
+    ],
     "fetched": true
   },
   {
     "word": "het",
     "rank": 3,
-    "definition": "the",
+    "definitions": [
+      {
+        "text": "the",
+        "semanticSubcategory": "lidwoord"
+      }
+    ],
     "pronunciation": "hɛt/ət",
     "gender": null,
+    "examples": [
+      "het huis met de tuin",
+      "Dit is het beste dat ik krijgen kon."
+    ],
     "fetched": true
   },
   {
     "word": "en",
     "rank": 4,
-    "definition": "and",
+    "definitions": [
+      {
+        "text": "and",
+        "semanticCategory": "linguistics"
+      },
+      {
+        "text": "and",
+        "semanticCategory": "mathematics"
+      }
+    ],
     "pronunciation": "ɛn",
     "gender": null,
+    "examples": [
+      "Eerst gaan we naar Amsterdam en dan naar Rotterdam.",
+      "vader en moeder",
+      "Twee en twee is vier."
+    ],
     "fetched": true
   },
   {
     "word": "in",
     "rank": 5,
-    "definition": "in",
+    "definitions": [
+      {
+        "text": "in",
+        "semanticSubcategory": "binnen"
+      },
+      {
+        "text": "in"
+      },
+      {
+        "text": "inside",
+        "semanticCategory": "sport"
+      }
+    ],
     "pronunciation": "ɪn",
     "gender": null,
+    "examples": [
+      "De pianist komt de zaal in.",
+      "Een kaalgeschoren hoofd bij mannen is in.",
+      "De bal is in."
+    ],
     "fetched": true
   },
   {
     "word": "dat",
     "rank": 7,
-    "definition": "that",
+    "definitions": [
+      {
+        "text": "that",
+        "semanticSubcategory": "dichtbij"
+      },
+      {
+        "text": "that",
+        "semanticSubcategory": "ver"
+      },
+      {
+        "text": "that",
+        "semanticSubcategory": "eerder"
+      },
+      {
+        "text": "who",
+        "semanticSubcategory": "toelichtend"
+      }
+    ],
     "pronunciation": "dɑt",
     "gender": null,
+    "examples": [
+      "Ik vind dit schilderij mooier dan dat schilderij.",
+      "In dat witte huis aan het eind van de straat woont mijn opa.",
+      "Heb je een griepje? Dat is niet zo erg.",
+      "Het paard dat daar in de wei staat, is van mij."
+    ],
     "fetched": true
   },
   {
     "word": "op",
     "rank": 8,
-    "definition": "on",
+    "definitions": [
+      {
+        "text": "on"
+      },
+      {
+        "text": "at",
+        "semanticSubcategory": "m.b.t. plaats"
+      },
+      {
+        "text": "at",
+        "semanticSubcategory": "m.b.t. tijd"
+      }
+    ],
     "pronunciation": "ɔp",
     "gender": null,
+    "examples": [
+      "een appel op de fruitschaal",
+      "Je sleutelbos ligt op de koelkast.",
+      "Ik kom wat later; ik zit nu nog op kantoor.",
+      "We waren vorige week op Terschelling.",
+      "op werkdagen van negen tot vijf"
+    ],
     "fetched": true
   },
   {
     "word": "te",
     "rank": 9,
-    "definition": "(way) too",
+    "definitions": [
+      {
+        "text": "(way) too"
+      }
+    ],
     "pronunciation": "tə",
     "gender": null,
+    "examples": [
+      "te vroeg arriveren",
+      "Die broek is te groot.",
+      "Dat parfum is te duur"
+    ],
     "fetched": true
   },
   {
     "word": "zijn",
     "rank": 11,
-    "definition": "be",
+    "definitions": [
+      {
+        "text": "be"
+      },
+      {
+        "text": "be",
+        "semanticSubcategory": "op een plaats"
+      },
+      {
+        "text": "be",
+        "semanticSubcategory": "in een toestand"
+      },
+      {
+        "text": "be",
+        "semanticSubcategory": "hulpwerkwoord"
+      }
+    ],
     "pronunciation": "zɛin",
     "gender": null,
+    "examples": [
+      "Er is een boomsoort die meer dan honderd meter hoog kan worden.",
+      "Waar zijn jullie?",
+      "Ik ben weer thuis.",
+      "ziek zijn",
+      "blij zijn"
+    ],
     "fetched": true
   },
   {
     "word": "voor",
     "rank": 12,
-    "definition": "in front of",
+    "definitions": [
+      {
+        "text": "in front of"
+      },
+      {
+        "text": "for"
+      }
+    ],
     "pronunciation": "vor",
     "gender": null,
+    "examples": [
+      "Voor in het boek staat een dankwoord.",
+      "De auto staat voor.",
+      "Zij is voor in de vijftig.",
+      "Wie is voor? Steek je hand op.",
+      "Acht mensen stemden voor."
+    ],
     "fetched": true
   },
   {
     "word": "met",
     "rank": 13,
-    "definition": "with",
+    "definitions": [
+      {
+        "text": "with"
+      }
+    ],
     "pronunciation": "mɛt",
     "gender": null,
+    "examples": [
+      "Met jou wil ik oud worden.",
+      "twee friet met mayonaise",
+      "met vriendelijke groet"
+    ],
     "fetched": true
   },
   {
     "word": "die",
     "rank": 14,
-    "definition": "that",
+    "definitions": [
+      {
+        "text": "that",
+        "semanticSubcategory": "aanwijzen"
+      },
+      {
+        "text": "that",
+        "semanticSubcategory": "ver"
+      },
+      {
+        "text": "it",
+        "semanticSubcategory": "eerder"
+      },
+      {
+        "text": "that",
+        "semanticSubcategory": "toelichtend"
+      }
+    ],
     "pronunciation": "di",
     "gender": null,
+    "examples": [
+      "Ik vind deze hond leuker dan die hond.",
+      "Ik woon in die flat aan het eind van de straat.",
+      "Ik wil de krant lezen. Waarom heb je die nog niet gekocht?",
+      "De vrouwen die daar op het plein staan zijn mijn vriendinnen."
+    ],
     "fetched": true
   },
   {
     "word": "niet",
     "rank": 15,
-    "definition": "no",
+    "definitions": [
+      {
+        "text": "no"
+      }
+    ],
     "pronunciation": "nit",
     "gender": null,
+    "examples": [
+      "niet lang nadenken, maar meteen beslissen",
+      "niet genoeg"
+    ],
     "fetched": true
   },
   {
     "word": "aan",
     "rank": 16,
-    "definition": "on",
+    "definitions": [
+      {
+        "text": "on"
+      }
+    ],
     "pronunciation": "an",
     "gender": null,
+    "examples": [
+      "De radio staat aan."
+    ],
     "fetched": true
   },
   {
     "word": "er",
     "rank": 17,
-    "definition": "there",
+    "definitions": [
+      {
+        "text": "there",
+        "semanticSubcategory": "plaats"
+      },
+      {
+        "text": "there",
+        "semanticSubcategory": "zonder betekenis"
+      }
+    ],
     "pronunciation": "ɛr",
     "gender": null,
+    "examples": [
+      "Er zijn veel mensen op straat.",
+      "er later aankomen dan verwacht",
+      "Ik heb nog tien knikkers, hoeveel heb jij er nog?",
+      "Wat is er gebeurd?",
+      "Er wordt gebeld, doe jij even open?"
+    ],
     "fetched": true
   },
   {
     "word": "om",
     "rank": 18,
-    "definition": "around",
+    "definitions": [
+      {
+        "text": "around",
+        "semanticSubcategory": "richting"
+      }
+    ],
     "pronunciation": "ɔm",
     "gender": null,
+    "examples": [
+      "ombuigen"
+    ],
     "fetched": true
   },
   {
     "word": "ook",
     "rank": 20,
-    "definition": "also",
+    "definitions": [
+      {
+        "text": "also"
+      }
+    ],
     "pronunciation": "ok",
     "gender": null,
+    "examples": [
+      "De buren aan de overkant doen ook mee.",
+      "Een eend kan alles: zwemmen, vliegen en ook nog een beetje lopen."
+    ],
     "fetched": true
   },
   {
     "word": "als",
     "rank": 21,
-    "definition": "as",
+    "definitions": [
+      {
+        "text": "as",
+        "semanticSubcategory": "bij vergelijking"
+      },
+      {
+        "text": "if"
+      },
+      {
+        "text": "if"
+      },
+      {
+        "text": "acting as",
+        "semanticSubcategory": "hoedanigheid"
+      }
+    ],
     "pronunciation": "ɑls",
     "gender": null,
+    "examples": [
+      "zo blij als een kind",
+      "pas naar huis gaan als je klaar bent met je werk",
+      "Als je lief bent, mag je mee, anders niet.",
+      "Persoonlijk vind ik vrije schooluren een goed idee, maar als directeur van de school kan ik er niet aan beginnen."
+    ],
     "fetched": true
   },
   {
     "word": "dan",
     "rank": 22,
-    "definition": "than",
+    "definitions": [
+      {
+        "text": "than",
+        "semanticSubcategory": "vergelijking"
+      }
+    ],
     "pronunciation": "dɑn",
     "gender": null,
+    "examples": [
+      "Hij is groter dan ik.",
+      "Je ziet er anders uit dan ik dacht."
+    ],
     "fetched": true
   },
   {
     "word": "maar",
     "rank": 23,
-    "definition": "only",
+    "definitions": [
+      {
+        "text": "only"
+      },
+      {
+        "text": "just",
+        "semanticSubcategory": "betekenisloos"
+      }
+    ],
     "pronunciation": "mar",
     "gender": null,
+    "examples": [
+      "Het is maar een paar minuten lopen.",
+      "Het gaat maar door.",
+      "Omdat ik niet precies weet hoe het moet, doe ik maar wat.",
+      "Als de winkel maar niet dicht is!"
+    ],
     "fetched": true
   },
   {
     "word": "bij",
     "rank": 24,
-    "definition": "honeybee",
+    "definitions": [
+      {
+        "text": "honeybee",
+        "semanticSubcategory": "insect"
+      }
+    ],
     "pronunciation": "bɛi",
     "gender": "feminine-masculine",
+    "examples": [
+      "bijenkorf",
+      "bijensteek"
+    ],
     "fetched": true
   },
   {
     "word": "of",
     "rank": 25,
-    "definition": "either",
+    "definitions": [
+      {
+        "text": "either"
+      }
+    ],
     "pronunciation": "ɔf",
     "gender": null,
     "examples": [
@@ -639,55 +571,118 @@ let example = [
   {
     "word": "uit",
     "rank": 26,
-    "definition": "finished",
+    "definitions": [
+      {
+        "text": "finished",
+        "semanticSubcategory": "afgelopen"
+      },
+      {
+        "text": "off",
+        "semanticSubcategory": "van kleding"
+      },
+      {
+        "text": "out-dated",
+        "semanticSubcategory": "ouderwets"
+      },
+      {
+        "text": "out",
+        "semanticSubcategory": "naar buiten"
+      },
+      {
+        "text": "completely",
+        "semanticSubcategory": "vanalles"
+      }
+    ],
     "pronunciation": "œyt",
     "gender": null,
     "examples": [
       "Doe jij de radio uit?",
-      "Het vuur is uit."
+      "Het vuur is uit.",
+      "Heb jij je jas al uit?",
+      "Die muziek was een jaar geleden erg populair maar is nu helemaal uit.",
+      "voor je uit staren"
     ],
     "fetched": true
   },
   {
     "word": "nog",
     "rank": 27,
-    "definition": "still",
+    "definitions": [
+      {
+        "text": "still"
+      },
+      {
+        "text": "more",
+        "semanticSubcategory": "opnieuw"
+      },
+      {
+        "text": "even",
+        "semanticSubcategory": "als versterking"
+      }
+    ],
     "pronunciation": "nɔx",
     "gender": null,
     "examples": [
       "Ben je nog niet naar school?",
-      "nog altijd niet getrouwd"
+      "nog altijd niet getrouwd",
+      "nog een keer in het reuzenrad",
+      "nog duurder dan vorig jaar"
     ],
     "fetched": true
   },
   {
     "word": "worden",
     "rank": 28,
-    "definition": "be",
+    "definitions": [
+      {
+        "text": "be",
+        "semanticSubcategory": "koppelwerkwoord"
+      },
+      {
+        "text": "be",
+        "semanticSubcategory": "hulpwerkwoord"
+      }
+    ],
     "pronunciation": "ˈwɔrdə(n)",
     "gender": null,
     "examples": [
       "Ik word ziek.",
       "Hij wil later piloot worden.",
-      "door de zon lekker bruin worden"
+      "door de zon lekker bruin worden",
+      "Er wordt veel gelachen tijdens de voorstelling.",
+      "Tijdens de oorlog werden veel burgers gedood."
     ],
     "fetched": true
   },
   {
     "word": "door",
     "rank": 29,
-    "definition": "through",
+    "definitions": [
+      {
+        "text": "through",
+        "semanticSubcategory": "doorheen"
+      },
+      {
+        "text": "through",
+        "semanticSubcategory": "gedurende"
+      }
+    ],
     "pronunciation": "dor",
     "gender": null,
     "examples": [
-      "Ik kan de straat niet door als dat hek er staat."
+      "Ik kan de straat niet door als dat hek er staat.",
+      "de hele dag door sigaretten roken"
     ],
     "fetched": true
   },
   {
     "word": "naar",
     "rank": 30,
-    "definition": "bleak",
+    "definitions": [
+      {
+        "text": "bleak"
+      }
+    ],
     "pronunciation": "nar",
     "gender": null,
     "examples": [
@@ -698,40 +693,88 @@ let example = [
   {
     "word": "tot",
     "rank": 32,
-    "definition": "(up) to",
+    "definitions": [
+      {
+        "text": "(up) to",
+        "semanticSubcategory": "afstand"
+      },
+      {
+        "text": "until",
+        "semanticSubcategory": "tijd"
+      },
+      {
+        "text": "to",
+        "semanticSubcategory": "naar"
+      },
+      {
+        "text": "as",
+        "semanticSubcategory": "niet langer dan"
+      }
+    ],
     "pronunciation": "tɔt",
     "gender": null,
     "examples": [
-      "tot de deur"
+      "tot de deur",
+      "tot de zomervakantie",
+      "een baan van negen tot vijf",
+      "zich richten tot iemand"
     ],
     "fetched": true
   },
   {
     "word": "ze",
     "rank": 33,
-    "definition": "she",
+    "definitions": [
+      {
+        "text": "she",
+        "semanticSubcategory": "vrouw"
+      },
+      {
+        "text": "they",
+        "semanticSubcategory": "personen"
+      }
+    ],
     "pronunciation": "zɛ",
     "gender": null,
     "examples": [
-      "Ze zag me niet."
+      "Ze zag me niet.",
+      "Ze hebben geen fiets, ze komen altijd in een auto."
     ],
     "fetched": true
   },
   {
     "word": "over",
     "rank": 35,
-    "definition": "over",
+    "definitions": [
+      {
+        "text": "over",
+        "semanticSubcategory": "overheen"
+      },
+      {
+        "text": "left over"
+      },
+      {
+        "text": "finished"
+      }
+    ],
     "pronunciation": "ˈovər",
     "gender": null,
     "examples": [
-      "Ze liepen het plein over."
+      "Ze liepen het plein over.",
+      "Hoeveel is er nog over van die zak snoepjes?",
+      "Na het bombardement was er niet veel van de binnenstad over.",
+      "Gisteren deed het nog pijn, maar nu is het over."
     ],
     "fetched": true
   },
   {
     "word": "hij",
     "rank": 36,
-    "definition": "he",
+    "definitions": [
+      {
+        "text": "he"
+      }
+    ],
     "pronunciation": "hɛi",
     "gender": null,
     "examples": [
@@ -742,17 +785,14 @@ let example = [
     "fetched": true
   },
   {
-    "word": "in",
-    "rank": 5,
-    "definition": "in",
-    "pronunciation": "ɪn",
-    "gender": null,
-    "fetched": true
-  },
-  {
     "word": "meer",
     "rank": 38,
-    "definition": "lake",
+    "definitions": [
+      {
+        "text": "lake",
+        "semanticSubcategory": "water"
+      }
+    ],
     "pronunciation": "mer",
     "gender": "neuter",
     "examples": [
@@ -764,32 +804,55 @@ let example = [
   {
     "word": "jaar",
     "rank": 39,
-    "definition": "year",
+    "definitions": [
+      {
+        "text": "year",
+        "semanticSubcategory": "12 maanden"
+      },
+      {
+        "text": "(calendar) year"
+      }
+    ],
     "pronunciation": "jar",
     "gender": "neuter",
     "examples": [
       "We gaan in april voor een jaar naar het buitenland.",
-      "dertig jaar lang met iemand getrouwd geweest zijn"
+      "dertig jaar lang met iemand getrouwd geweest zijn",
+      "We gaan dit jaar met vakantie naar Spanje."
     ],
     "fetched": true
   },
   {
     "word": "was",
     "rank": 40,
-    "definition": "wash",
+    "definitions": [
+      {
+        "text": "wash",
+        "semanticSubcategory": "het wassen"
+      },
+      {
+        "text": "wash"
+      }
+    ],
     "pronunciation": "wɑs",
     "gender": "masculine",
     "examples": [
       "de was doen",
       "Ik moet nog een was draaien.",
-      "handwas"
+      "handwas",
+      "wasmand",
+      "wasrek"
     ],
     "fetched": true
   },
   {
     "word": "ik",
     "rank": 41,
-    "definition": "I",
+    "definitions": [
+      {
+        "text": "I"
+      }
+    ],
     "pronunciation": "ɪk",
     "gender": null,
     "examples": [
@@ -800,7 +863,11 @@ let example = [
   {
     "word": "kan",
     "rank": 42,
-    "definition": "jug",
+    "definitions": [
+      {
+        "text": "jug"
+      }
+    ],
     "pronunciation": "kɑn",
     "gender": "masculine-feminine",
     "examples": [
@@ -812,18 +879,39 @@ let example = [
   {
     "word": "je",
     "rank": 43,
-    "definition": "you",
+    "definitions": [
+      {
+        "text": "you"
+      },
+      {
+        "text": "you"
+      },
+      {
+        "text": "your"
+      },
+      {
+        "text": "you"
+      }
+    ],
     "pronunciation": "jə",
     "gender": null,
     "examples": [
-      "Ga je morgen ook weg?"
+      "Ga je morgen ook weg?",
+      "Ik heb je dat boek al gegeven.",
+      "Ik kom je ophalen.",
+      "Hier is je jas.",
+      "Zoiets doe je niet."
     ],
     "fetched": true
   },
   {
     "word": "zich",
     "rank": 44,
-    "definition": "himself",
+    "definitions": [
+      {
+        "text": "himself"
+      }
+    ],
     "pronunciation": "zɪx",
     "gender": null,
     "examples": [
@@ -835,50 +923,101 @@ let example = [
   {
     "word": "al",
     "rank": 45,
-    "definition": "already",
+    "definitions": [
+      {
+        "text": "already",
+        "semanticSubcategory": "reeds"
+      },
+      {
+        "text": "yet",
+        "semanticSubcategory": "versterkend"
+      }
+    ],
     "pronunciation": "ɑl",
     "gender": null,
     "examples": [
-      "Ben je er al?"
+      "Ben je er al?",
+      "al te duidelijk je mening zeggen"
     ],
     "fetched": true
   },
   {
     "word": "hebben",
     "rank": 46,
-    "definition": "have",
+    "definitions": [
+      {
+        "text": "have",
+        "semanticSubcategory": "bezitten"
+      },
+      {
+        "text": "have",
+        "semanticSubcategory": "lijden aan"
+      },
+      {
+        "text": "auxilliary (verb)",
+        "semanticSubcategory": "hulpwerkwoord"
+      }
+    ],
     "pronunciation": "ˈhɛbə(n)",
     "gender": null,
     "examples": [
       "een mooi gebit hebben",
       "de Nederlandse nationaliteit hebben",
-      "morgen tijd hebben om naar de film te gaan"
+      "morgen tijd hebben om naar de film te gaan",
+      "longontsteking hebben",
+      "het aan je hart hebben"
     ],
     "fetched": true
   },
   {
     "word": "geen",
     "rank": 47,
-    "definition": "no",
+    "definitions": [
+      {
+        "text": "no"
+      },
+      {
+        "text": "no"
+      }
+    ],
     "pronunciation": "xen",
     "gender": null,
+    "examples": [
+      "Ik wil geen melk maar karnemelk.",
+      "geen twintig maar dertig",
+      "geen bruine bonen lusten"
+    ],
     "fetched": true
   },
   {
     "word": "hun",
     "rank": 48,
-    "definition": "their",
+    "definitions": [
+      {
+        "text": "their",
+        "semanticSubcategory": "bez.vnw."
+      },
+      {
+        "text": "them",
+        "semanticSubcategory": "pers.vnw."
+      }
+    ],
     "pronunciation": "hʏn",
     "gender": null,
     "examples": [
-      "De buren hebben hun huis verkocht."
+      "De buren hebben hun huis verkocht.",
+      "Ik heb hun mijn huisadres gegeven."
     ],
     "fetched": true
   },
   {
     "word": "we",
     "rank": 49,
-    "definition": "we",
+    "definitions": [
+      {
+        "text": "we"
+      }
+    ],
     "pronunciation": "wə",
     "gender": null,
     "examples": [
@@ -887,3 +1026,44 @@ let example = [
     "fetched": true
   }
 ]
+
+let old = `let dutchArray = dutchWordList.split('\n')
+let wordSet: any[] = [];
+let dupl: string[] = []
+
+
+
+
+let results = dutchArray.map((currentWord, i) => {
+
+  if (wordSet.find((element) => element.toLowerCase() === currentWord.toLowerCase())) {
+    console.warn("duplicate")
+    dupl = [...dupl, currentWord]
+
+  }
+  else {
+
+    wordSet = [...wordSet, currentWord]
+
+  }
+})
+
+console.log(wordSet.length, dutchArray.length)
+wordSet = wordSet.map(((currentWord, i) => {
+
+  return {
+    "word": currentWord,
+    "rank": i,
+    "definitions": [
+      { "text": null, "semanticCategory": null },
+    ],
+    "pronunciation": null,
+    "gender": null,
+    "fetched": false
+  }
+
+
+}))
+
+console.log(JSON.stringify(wordSet))
+`

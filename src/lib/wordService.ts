@@ -1,9 +1,9 @@
 // src/lib/wordService.ts
 
-import type { Word, WordWithDefinition } from '../types';
+import type { Word, WordWithDefinition } from '@/types';
 import { getCachedWord, setCachedWord } from './wordCache';
 import { fetchWordDefinition } from './lexicalaApi';
-import dutchWords from '../data/dutch-words.json';
+import dutchWords from '@/data/dutch-words.json';
 
 /**
  * Get a word's definition using the hybrid approach:
@@ -17,12 +17,12 @@ export async function getWordDefinition(
     // Step 1: Check JSON file
     const wordFromJson = findWordInJson(word);
 
-    if (wordFromJson && wordFromJson.fetched && wordFromJson.definition) {
-        // We have it in the JSON file with definition
+    if (wordFromJson && wordFromJson.fetched && wordFromJson.definitions) {
+        // We have it in the JSON file with definitions
         return {
             word: wordFromJson.word,
             rank: wordFromJson.rank,
-            definition: wordFromJson.definition,
+            definitions: wordFromJson.definitions,
             pronunciation: wordFromJson.pronunciation || null,
             gender: wordFromJson.gender || null,
             fetched: true,
@@ -37,7 +37,6 @@ export async function getWordDefinition(
 
     // Step 3: Fetch from API
     try {
-        console.log("fetching")
         const rank = wordFromJson?.rank || 0;
         const fetchedWord = await fetchWordDefinition(word, rank);
 
@@ -46,7 +45,7 @@ export async function getWordDefinition(
             // setCachedWord will add fetchedAt and fetched automatically
             setCachedWord({
                 word: fetchedWord.word,
-                definition: fetchedWord.definition,
+                definitions: fetchedWord.definitions,
                 pronunciation: fetchedWord.pronunciation,
                 gender: fetchedWord.gender,
                 rank: fetchedWord.rank,
@@ -132,7 +131,7 @@ export function getDefinitionStats(): {
     percentage: number;
 } {
     const words = dutchWords as Word[];
-    const withDefinitions = words.filter((w) => w.fetched && w.definition).length;
+    const withDefinitions = words.filter((w) => w.fetched && w.definitions && w.definitions.length > 0).length;
 
     return {
         total: words.length,
