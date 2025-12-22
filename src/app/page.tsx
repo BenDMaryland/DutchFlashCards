@@ -46,14 +46,15 @@ export default function HomePage() {
 
 
 
+  useEffect(() => {
+    async function testWords() {
+      const testWord = await getWordDefinition('mel');
+      console.log('Test result for "mel":', testWord);
+    }
+    testWords();
 
-let apple = ''
-useEffect(() => {
-  apple = getWordDefinition('met')
 
-}, [])
-console.log(apple)
-
+  }, []);
   return(
     <div>
       <h1>Dutch Learning App</h1>
