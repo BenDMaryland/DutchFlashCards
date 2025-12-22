@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { getTotalWordCount, getDefinitionStats } from '@/lib/wordService';
+import { getTotalWordCount, getDefinitionStats, getWordDefinition } from '@/lib/wordService';
 import { setCachedWord, getAllCachedWords } from '@/lib/wordCache';
 import Card from "../compontents/card"
 import { dutchWordList } from '../data/dutch-words'
@@ -18,7 +18,7 @@ export default function HomePage() {
       setFetching(true);
       try {
         // Fetch from YOUR API route (server-side)
-        const response = await fetch('/api/words?start=0&end=50');
+        const response = await fetch('/api/words?start=0&end=10');
         const data = await response.json();
         setWords(data);
 
@@ -46,9 +46,15 @@ export default function HomePage() {
 
 
 
-  // console.log(JSON.stringify(words))
 
-  return (
+let apple = ''
+useEffect(() => {
+  apple = getWordDefinition('met')
+
+}, [])
+console.log(apple)
+
+  return(
     <div>
       <h1>Dutch Learning App</h1>
 
