@@ -13,48 +13,51 @@ export default function HomePage() {
   const [fetching, setFetching] = useState(false);
   const [words, setWords] = useState<WordWithDefinition[]>([]);
 
-  useEffect(() => {
-    async function fetchWords() {
-      setFetching(true);
-      try {
-        // Fetch from YOUR API route (server-side)
-        const response = await fetch('/api/words?start=0&end=10');
-        const data = await response.json();
-        setWords(data);
+  // useEffect(() => {
+  //   async function fetchWords() {
+  //     setFetching(true);
+  //     try {
+  //       // Fetch from YOUR API route (server-side)
+  //       const response = await fetch('/api/words?start=0&end=10');
+  //       const data = await response.json();
+  //       setWords(data);
 
-        // Cache each word in localStorage (client-side)
-        data.forEach((word: WordWithDefinition) => {
-          setCachedWord({
-            word: word.word,
-            definitions: word.definitions,
-            pronunciation: word.pronunciation,
-            gender: word.gender,
-            rank: word.rank,
-            fetched: true,
-            fetchedAt: new Date().toISOString(),
-          });
-        });
-      } catch (error) {
-        console.error('Error fetching words:', error);
-      } finally {
-        setFetching(false);
-      }
-    }
+  //       // Cache each word in localStorage (client-side)
+  //       data.forEach((word: WordWithDefinition) => {
+  //         setCachedWord({
+  //           word: word.word,
+  //           definitions: word.definitions,
+  //           pronunciation: word.pronunciation,
+  //           gender: word.gender,
+  //           rank: word.rank,
+  //           fetched: true,
+  //           fetchedAt: new Date().toISOString(),
+  //         });
+  //       });
+  //     } catch (error) {
+  //       console.error('Error fetching words:', error);
+  //     } finally {
+  //       setFetching(false);
+  //     }
+  //   }
 
-    fetchWords();
-  }, []);
+  //   fetchWords();
+  // }, []);
 
+  // console.log(words)
 
-
+let finalresults 
   useEffect(() => {
     async function testWords() {
-      const testWord = await getWordDefinition('mel');
-      console.log('Test result for "mel":', testWord);
+      const response = await fetch('/api/words?word=gaat');
+      const testWord = await response.json();
+      console.log('Test result for "gaat":', testWord);
+      finalresults = testWord
     }
     testWords();
-
-
   }, []);
+
+
   return(
     <div>
       <h1>Dutch Learning App</h1>
@@ -83,7 +86,152 @@ export default function HomePage() {
     </div>
   );
 }
-
+let neaw = [
+  {
+    "word": "de",
+    "rank": 0,
+    "definitions": [
+      {
+        "text": "the"
+      }
+    ],
+    "pronunciation": "də",
+    "gender": null,
+    "examples": [
+      "De vork en het mes."
+    ],
+    "fetched": true
+  },
+  {
+    "word": "van",
+    "rank": 1,
+    "definitions": [
+      {
+        "text": "of",
+        "semanticSubcategory": "afkomstig van"
+      },
+      {
+        "text": "by",
+        "semanticSubcategory": "m.b.t. eigendom"
+      },
+      {
+        "text": "from",
+        "semanticSubcategory": "gemaakt van"
+      },
+      {
+        "text": "of",
+        "semanticSubcategory": "m.b.t. kenmerk"
+      }
+    ],
+    "pronunciation": "vɑn",
+    "gender": null,
+    "examples": [
+      "van Amsterdam",
+      "Ik hoorde het van mijn collega.",
+      "de jas van mijn zus",
+      "de moeder van mijn buurvrouw",
+      "een tafel van hout"
+    ],
+    "fetched": true
+  },
+  {
+    "word": "wil",
+    "rank": 2,
+    "definitions": [
+      {
+        "text": "will"
+      }
+    ],
+    "pronunciation": "wɪl",
+    "gender": "masculine",
+    "examples": [
+      "een sterke wil hebben"
+    ],
+    "fetched": true
+  },
+  {
+    "word": "tegen",
+    "rank": 3,
+    "definitions": [
+      {
+        "text": "against"
+      },
+      {
+        "text": "con"
+      }
+    ],
+    "pronunciation": "ˈtexə(n)",
+    "gender": null,
+    "examples": [
+      "tegen een beslissing stemmen",
+      "Het zit me tegen.",
+      "de schijn tegen je hebben"
+    ],
+    "fetched": true
+  },
+  {
+    "word": "men",
+    "rank": 4,
+    "definitions": [
+      {
+        "text": "one"
+      }
+    ],
+    "pronunciation": "mɛn",
+    "gender": null,
+    "examples": [
+      "Men spreekt liever niet over deze kwestie.",
+      "zoiets doet men niet waar vreemden bij zijn"
+    ],
+    "fetched": true
+  },
+  {
+    "word": "tussen",
+    "rank": 7,
+    "definitions": [
+      {
+        "text": "between",
+        "semanticSubcategory": "plaats"
+      },
+      {
+        "text": "between",
+        "semanticSubcategory": "tijd"
+      },
+      {
+        "text": "among(st)"
+      },
+      {
+        "text": "between"
+      }
+    ],
+    "pronunciation": "ˈtʏsə(n)",
+    "gender": null,
+    "examples": [
+      "de weg tussen Amsterdam en Utrecht",
+      "tussen twaalf en twee uur",
+      "tussen Kerstmis en Nieuwjaar",
+      "zich tussen de mensen begeven"
+    ],
+    "fetched": true
+  },
+  {
+    "word": "waar",
+    "rank": 9,
+    "definitions": [
+      {
+        "text": "goods",
+        "semanticCategory": "commerce"
+      }
+    ],
+    "pronunciation": "war",
+    "gender": "feminine-masculine",
+    "examples": [
+      "warenhuis",
+      "handelswaar"
+    ],
+    "fetched": true
+  }
+]
 let missing = [
   {
     "word": "de",
@@ -1033,7 +1181,100 @@ let missing = [
     "fetched": true
   }
 ]
-
+let example = [
+  {
+    "word": "wereld",
+    "rank": 100,
+    "definitions": [
+      {
+        "text": "world",
+        "semanticCategory": "geography"
+      },
+      {
+        "text": "world"
+      }
+    ],
+    "pronunciation": "'werəlt",
+    "gender": "masculine-feminine",
+    "examples": [
+      "wereldkaart",
+      "wereldmacht",
+      "Er wonen 6 miljard mensen op de wereld.",
+      "de wereld van de mode",
+      "dierenwereld"
+    ],
+    "fetched": true
+  },
+  {
+    "word": "alles",
+    "rank": 102,
+    "definitions": [
+      {
+        "text": "everything",
+        "semanticSubcategory": "heel veel"
+      }
+    ],
+    "pronunciation": "ˈɑləs",
+    "gender": null,
+    "examples": [
+      "alles opbiechten"
+    ],
+    "fetched": true
+  },
+  {
+    "word": "want",
+    "rank": 103,
+    "definitions": [
+      {
+        "text": "mitten",
+        "semanticSubcategory": "kledingstuk"
+      }
+    ],
+    "pronunciation": "wɑnt",
+    "gender": "feminine-masculine",
+    "examples": [
+      "een paar wollen wanten",
+      "ovenwant"
+    ],
+    "fetched": true
+  },
+  {
+    "word": "binnen",
+    "rank": 104,
+    "definitions": [
+      {
+        "text": "inside"
+      }
+    ],
+    "pronunciation": "ˈbɪnə(n)",
+    "gender": null,
+    "examples": [
+      "Buiten regent het, binnen is het droog.",
+      "naar binnen gaan"
+    ],
+    "fetched": true
+  },
+  {
+    "word": "elkaar",
+    "rank": 105,
+    "definitions": [
+      {
+        "text": "each other",
+        "semanticSubcategory": "wederzijds"
+      },
+      {
+        "text": "each other"
+      }
+    ],
+    "pronunciation": "ɛlˈkar",
+    "gender": null,
+    "examples": [
+      "elkaar een zoen geven",
+      "elkaar helpen"
+    ],
+    "fetched": true
+  }
+]
 let old = `let dutchArray = dutchWordList.split('\n')
 let wordSet: any[] = [];
 let dupl: string[] = []
